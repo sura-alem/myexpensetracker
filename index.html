@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple, elegant expense tracker to manage daily spending and track budgets.">
+  <title>Smart Expense Tracker</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="header-icon">💸</div>
+      <h1>Expense Tracker</h1>
+      <p class="subtitle">Keep an eye on your daily spending effortlessly</p>
+    </header>
+
+    <!-- Total Spent Overview Card -->
+    <section class="summary-card" aria-label="Total Spending Summary">
+      <div class="summary-info">
+        <span class="summary-label">Total Spent</span>
+        <h2 id="total-amount" class="summary-amount">$0.00</h2>
+      </div>
+      <div class="summary-badge" id="total-count-badge">0 Expenses</div>
+    </section>
+
+    <!-- Error Banner (Hidden by default) -->
+    <div id="error-message" class="error-banner hidden" role="alert" aria-live="polite"></div>
+
+    <!-- Add Expense Form Card -->
+    <section class="card form-card">
+      <h2 class="card-title">Add New Expense</h2>
+      <form id="expense-form" novalidate>
+        <div class="form-group">
+          <label for="expense-name">Expense Name</label>
+          <input 
+            type="text" 
+            id="expense-name" 
+            name="expenseName" 
+            placeholder="e.g., Groceries, Coffee, Books"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expense-amount">Amount ($)</label>
+            <input 
+              type="number" 
+              id="expense-amount" 
+              name="expenseAmount" 
+              placeholder="0.00" 
+              step="0.01" 
+              min="0.01"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="expense-category">Category</label>
+            <select id="expense-category" name="expenseCategory">
+              <option value="Food & Dining">🍔 Food & Dining</option>
+              <option value="Transportation">🚗 Transportation</option>
+              <option value="Shopping">🛍️ Shopping</option>
+              <option value="Entertainment">🎬 Entertainment</option>
+              <option value="Utilities & Bills">💡 Utilities & Bills</option>
+              <option value="Health">💊 Health</option>
+              <option value="Other">📦 Other</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" id="add-expense-btn" class="btn btn-primary">
+          <span class="btn-icon">+</span> Add Expense
+        </button>
+      </form>
+    </section>
+
+    <!-- Expenses List Card -->
+    <section class="card list-card">
+      <div class="list-header">
+        <h2 class="card-title">Expense History</h2>
+      </div>
+
+      <!-- Empty State (Shown when no items exist) -->
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">📝</div>
+        <p class="empty-text">No expenses added yet</p>
+        <p class="empty-subtext">Add your first expense above to start tracking!</p>
+      </div>
+
+      <!-- List of Expenses -->
+      <ul id="expense-list" class="expense-list" aria-label="List of expenses">
+        <!-- Dynamic items will be inserted here by JavaScript -->
+      </ul>
+    </section>
+  </div>
+
+  <!-- JavaScript file loaded at bottom of body -->
+  <script src="script.js"></script>
+</body>
+</html>
